@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.leta</groupId>
+    <artifactId>leta-intelligent</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1</version>
+    <modules>
+        <module>leta-common</module>
+        <module>eureka-server</module>
+        <module>config-server</module>
+        <module>gateway-server</module>
+        <module>leta-upms</module>
+        <module>leta-dependencies</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.1.RELEASE</version>
+    </parent>
+
+    <description>
+        乐踏智能服务平台
+    </description>
+
+    <organization>
+        <name>深圳乐踏共享电动车有限公司</name>
+        <url>http://www.leta.cn</url>
+    </organization>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!-- 覆盖sprin-boot-dependencies中的MySQL驱动版本 -->
+        <mysql.version>8.0.11</mysql.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.leta</groupId>
+                <artifactId>leta-dependencies</artifactId>
+                <version>0.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <excludes><!-- jar 中排除文件 -->
+                            <exclude>**/*.properties</exclude>
+                            <exclude>**/*.yml</exclude>
+                            <exclude>**/*.yaml</exclude>
+                            <exclude>**/*.xml</exclude>
+                            <exclude>**/scripts/**</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>${project.name}</id>
+                            <configuration>
+                                <archive>
+                                    <manifest>
+                                        <mainClass>Main</mainClass>
+                                    </manifest>
+                                </archive>
+                                <descriptors>
+                                    <descriptor>src/main/resources/scripts/assembly.xml</descriptor>
+                                </descriptors>
+                                <!--
+                                <descriptorRefs>
+                                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                                </descriptorRefs>
+                                -->
+                                <finalName>${project.name}-${project.version}</finalName>
+
+                            </configuration>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <developers>
+        <developer>
+            <name>谢庚才</name>
+            <email>xiegengcai@foxmail.com</email>
+        </developer>
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus-local</name>
+            <url>http://192.168.2.100:8081/repository/maven-public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>nexus-local</name>
+            <url>http://192.168.2.100:8081/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <!-- 这里的ID要和setting的id一致 -->
+            <id>maven-repository-releases</id>
+            <url>http://192.168.2.100:8081/repository/maven-releases/</url>
+        </repository>
+        <!--这是打成快照版本的配置，如果不用这个snapshotRepository标签，打包失败，会报权限问题 -->
+        <snapshotRepository>
+            <id>maven-repository-snapshots</id>
+            <url>http://192.168.2.100:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

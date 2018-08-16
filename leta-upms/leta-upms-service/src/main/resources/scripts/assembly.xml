@@ -1,0 +1,58 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<dependencySets>
+		<dependencySet>
+			<useProjectArtifact>true</useProjectArtifact>
+			<outputDirectory>lib</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+	<fileSets>
+		<fileSet>
+			<directory>${project.build.scriptSourceDirectory}</directory>
+			<outputDirectory></outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources/scripts</directory>
+			<outputDirectory>/bin</outputDirectory>
+			<fileMode>0755</fileMode>
+			<includes>
+				<include>*.sh</include>
+				<include>run.bat</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources</directory>
+			<outputDirectory>/conf</outputDirectory>
+			<fileMode>0644</fileMode>
+			<includes>
+				<include>*.properties</include>
+				<include>bootstrap.yml</include>
+				<include>log*.xml</include>
+			</includes>
+			<excludes>
+				<exclude>application-*.yml</exclude>
+			</excludes>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources/sql</directory>
+			<outputDirectory>/conf/sql</outputDirectory>
+			<fileMode>0644</fileMode>
+		</fileSet>
+	</fileSets>
+
+	<!-- 多环境配置文件处理 -->
+	<files>
+		<file>
+			<source>src/main/resources/application-${env}.yml</source>
+			<outputDirectory>/conf</outputDirectory>
+			<fileMode>0644</fileMode>
+			<destName>application.yml</destName>
+		</file>
+	</files>
+</assembly>

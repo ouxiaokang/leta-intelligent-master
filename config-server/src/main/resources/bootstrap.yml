@@ -1,0 +1,62 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@192.168.2.100:leta-rd/spring-cloud-config.git
+          strict-host-key-checking: false
+          #default-label: ${spring.profiles.active}   #解决监控down
+          label: ${spring.profiles.active}
+
+# 关闭安全管理
+management:
+  security:
+    enabled: false
+endpoints:
+  health:
+    sensitive: false
+---
+spring:
+  profiles: dev
+#  rabbitmq:
+#    host: localhost
+#    port: 15672
+#    username: leta_test
+#    password: 123456
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.2.100:8000/eureka/
+    registry-fetch-interval-seconds: 10
+---
+spring:
+  profiles: prd
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5682
+    username:
+    password:
+  cloud:
+    config:
+      retry:
+        initial-interval: 3000
+        multiplier: 1.5
+        max-interval: 20000
+        max-attempts: 6
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.2.100:8000/eureka/

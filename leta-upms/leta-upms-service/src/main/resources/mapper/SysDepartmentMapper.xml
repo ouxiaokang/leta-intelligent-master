@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.leta.upms.mapper.SysDepartmentMapper">
+
+    <!-- 属性映射 -->
+   <resultMap id="BaseResultMap" type="cn.leta.upms.model.entity.SysDepartment">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="parent_id" jdbcType="INTEGER" property="parentId" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="level" jdbcType="INTEGER" property="level" />
+		<result column="sort_order" jdbcType="INTEGER" property="sortOrder" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        	id AS id
+        	parent_id AS parentId, 
+        	name AS name, 
+        	description AS description, 
+        	status AS status, 
+        	create_time AS createTime, 
+        	level AS level, 
+        	sort_order AS sortOrder, 
+        	update_time AS updateTime, 
+    </sql>
+
+</mapper>

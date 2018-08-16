@@ -1,0 +1,43 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<dependencySets>
+		<dependencySet>
+			<useProjectArtifact>true</useProjectArtifact>
+			<outputDirectory>lib</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+	<fileSets>
+		<fileSet>
+			<directory>${project.build.scriptSourceDirectory}</directory>
+			<outputDirectory></outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources/scripts</directory>
+			<outputDirectory>/bin</outputDirectory>
+			<includes>
+				<include>*.sh</include>
+				<include>run.bat</include>
+			</includes>
+		</fileSet>
+		
+		<fileSet>
+			<directory>src/main/resources</directory>
+			<outputDirectory>/conf</outputDirectory>
+			<includes>
+				<include>*.properties</include>
+				<include>*.yml</include>
+				<include>*.yaml</include>
+				<include>log*.xml</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources/sql</directory>
+			<outputDirectory>/conf/sql</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>

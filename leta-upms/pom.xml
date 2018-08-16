@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>leta-intelligent</artifactId>
+        <groupId>cn.leta</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>leta-upms</artifactId>
+    <packaging>pom</packaging>
+
+    <description>权限管理服务</description>
+
+    <modules>
+
+        <module>leta-upms-api</module>
+        <module>leta-upms-service</module>
+    </modules>
+    <properties>
+        <leta-common.version>0.0.1</leta-common.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+</project>

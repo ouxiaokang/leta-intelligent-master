@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.leta.upms.mapper.SysUserResourceMapper">
+
+    <!-- 属性映射 -->
+   <resultMap id="BaseResultMap" type="cn.leta.upms.model.entity.SysUserResource">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="res_id" jdbcType="INTEGER" property="resId" />
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+		<result column="type" jdbcType="TINYINT" property="type" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        	id AS id
+        	res_id AS resId, 
+        	user_id AS userId, 
+        	type AS type, 
+    </sql>
+
+</mapper>

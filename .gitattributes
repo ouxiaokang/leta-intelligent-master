@@ -1,0 +1,35 @@
+# 任何文件自动换行。提交时自动转为LF，检出时转为CRLF
+* text=auto
+# 以下文件使用文本文件标记，并进行行尾规范化
+*.css           text
+*.df            text
+*.htm           text
+*.html          text
+*.java          text
+*.js            text
+*.json          text
+*.jsp           text
+*.jspf          text
+*.jspx          text
+*.properties    text
+*.bat           text
+*.tld           text
+*.txt           text
+*.tag           text
+*.tagx          text
+*.xml           text
+*.yml           text
+
+# 以下文件不使用文本文件标记
+*.dll           -text
+*.ear           -text
+*.gif           -text
+*.ico           -text
+*.jpg           -text
+*.jpeg          -text
+*.png           -text
+*.so            -text
+
+# 以下文件任何时候都用lf换行
+*.sh            eol=lf
+*.py            eol=lf
