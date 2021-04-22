@@ -19,7 +19,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <lang3.version>3.5</lang3.version>
         <mybatis-plus.version>2.3</mybatis-plus.version>
-        <mybatis.version>3.4.6</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <poi.version>3.17</poi.version>
         <fastjson.version>1.2.47</fastjson.version>
