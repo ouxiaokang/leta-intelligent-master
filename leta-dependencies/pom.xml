@@ -22,7 +22,7 @@
         <mybatis.version>3.4.6</mybatis.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <poi.version>3.17</poi.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <spring-data-redis.version>2.0.8.RELEASE</spring-data-redis.version>
         <persistence-api.version>1.0.2</persistence-api.version>
         <swagger-spring-boot-starter.version>1.7.1.RELEASE</swagger-spring-boot-starter.version>
